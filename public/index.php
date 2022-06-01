@@ -8,7 +8,7 @@ use Entity\Collection\SeasonCollection;
 use Html\AppWebPage;
 
 $webPage = new AppWebPage();
-$webPage->setTitle('Séries Tv');
+$webPage->setTitle('Séries TV');
 
 $series = \Entity\Collection\TvshowCollection::findAll();
 

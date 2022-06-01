@@ -11,7 +11,7 @@ use PDO;
 
 class SeasonCollection
 {
-    public static function findBySeasonId(int $season): array
+    public static function findByTvshowId(int $season): array
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
