@@ -21,7 +21,7 @@ $webPage->appendContent(
 foreach ($series as $index => $serie) {
     $webPage->appendContent(
         <<<HTML
-    <p> <a href="serie.php?serieID={$serie->getId()}">{$webPage::escapeString($serie->getName())}</a></p>
+    <p> <img src="poster.php?posterId={$serie->getPosterId()}"> <a href="serie.php?serieID={$serie->getId()}">{$webPage::escapeString($serie->getName())}.{$webPage::escapeString($serie->getOverview())}</a></p>
     HTML
     );
 }
