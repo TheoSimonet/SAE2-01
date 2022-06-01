@@ -2,6 +2,10 @@
 
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Collection\SeasonCollection;
+use PDO;
+
 class Tvshow
 {
     private int $id;
@@ -71,4 +75,25 @@ class Tvshow
         return $this->posterId;
     }
 
+    public static function findById(int $id): Season
+    {
+        $tvshow = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+            SELECT id,name
+            FROM tvshow
+            WHERE id = :id;
+            SQL
+        );
+        $tvshow->bindParam('id', $id);
+        $tvshow->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Tvshow::class);
+        $tvshow->execute();
+        $tvshow = $tvshow->fetchAll();
+        return $tvshow[0];
+    }
+
+    public function getSeason(): array
+    {
+        $season = new SeasonCollection();
+        return $season->findByTvshowId($this->getId());
+    }
 }

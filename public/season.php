@@ -3,5 +3,9 @@
 declare(strict_types=1);
 
 use Html\AppWebPage;
+use Entity\Season;
 
-$season = new \Html\AppWebPage();
+$seasonId = intval($_GET['seasonId']);
+
+$web = new \Html\AppWebPage();
+$season =

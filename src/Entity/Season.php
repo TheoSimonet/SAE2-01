@@ -2,6 +2,8 @@
 
 namespace Entity;
 
+use Database\MyPdo;
+
 class Season
 {
     private int $id;
