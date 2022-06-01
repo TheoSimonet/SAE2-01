@@ -4,6 +4,7 @@ namespace Entity;
 
 use Database\MyPdo;
 use Entity\Collection\SeasonCollection;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
 
 class Tvshow
@@ -75,11 +76,11 @@ class Tvshow
         return $this->posterId;
     }
 
-    public static function findById(int $id): Season
+    public static function findById(int $id): Tvshow
     {
         $tvshow = MyPDO::getInstance()->prepare(
             <<<'SQL'
-            SELECT id,name
+            SELECT *
             FROM tvshow
             WHERE id = :id;
             SQL
@@ -88,7 +89,11 @@ class Tvshow
         $tvshow->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Tvshow::class);
         $tvshow->execute();
         $tvshow = $tvshow->fetchAll();
-        return $tvshow[0];
+        if ($tvshow == true) {
+            return $tvshow[0];
+        } else {
+            throw EntityNotFoundException("Entité introuvable");
+        }
     }
 
     public function getSeason(): array
