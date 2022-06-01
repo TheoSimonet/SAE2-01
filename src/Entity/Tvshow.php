@@ -96,9 +96,4 @@ class Tvshow
         }
     }
 
-    public function getSeason(): array
-    {
-        $season = new SeasonCollection();
-        return $season->findByTvshowId($this->getId());
-    }
 }
