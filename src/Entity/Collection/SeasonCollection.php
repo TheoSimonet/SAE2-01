@@ -12,7 +12,7 @@ use PDO;
 class SeasonCollection
 {
 
-    public static function findByArtistId(int $tvShowId): array
+    public static function findByTvShowId(int $tvShowId): array
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
