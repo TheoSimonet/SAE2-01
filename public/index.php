@@ -1,26 +1,37 @@
 <?php
 declare(strict_types=1);
 
-require_once '../vendor/autoload.php';
 
 use Database\MyPdo;
 use Html\WebPage;
+use Entity\Collection\SeasonCollection;
+use Html\AppWebPage;
 
-$webPage = new WebPage();
+$webPage = new AppWebPage();
+$webPage->setTitle('Séries Tv');
 
-$webPage->appendContent();
-MyPDO::setConfiguration('mysql:host=mysql;dbname=herm0021;charset=utf8', 'herm0021', 'herm0021');
+$series = serieCollection::findAll();
 
-$stmt = MyPDO::getInstance()->prepare(
-    <<<'SQL'
-    SELECT name
-    FROM tvshow
-    ORDER BY name
-SQL
+$webPage->appendContent(
+    <<<HTML
+                <div class="list">\n
+HTML
+
+);
+foreach ($series as $index => $serie) {
+    $webPage->appendContent(
+        <<<HTML
+                <p> <a href="serie.php?serieID={$serie->getId()}">{$webPage::escapeString($serie->getName())}</a></p>
+HTML
+
+    );
+}
+$webPage->appendContent(
+    <<<HTML
+        </div>\n
+HTML
+
 );
 
-$stmt->execute();
+echo $webPage->toHTML();
 
-while (($ligne = $stmt->fetch()) !== false) {
-    echo "<p>{$ligne['name']}\n";
-}
