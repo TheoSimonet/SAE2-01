@@ -1,0 +1,21 @@
+header{
+    display: flex;
+    justify-content: center;
+    background-color:aliceblue;
+}
+.content{
+    overflow: auto;
+    max-height: 820px;
+    margin: 30px;
+    border: 3px solid grey;
+}
+.list{
+    margin: 30px;
+}
+p{
+    border-style: solid;
+    border-color:grey;
+    background-color: lightgray;
+    display:flex;
+}
+
