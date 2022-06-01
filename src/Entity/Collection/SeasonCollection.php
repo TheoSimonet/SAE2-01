@@ -12,7 +12,7 @@ use PDO;
 class SeasonCollection
 {
 
-    public static function findByTvShowId(int $tvShowId): array
+    public static function findBySeasonId(int $Season): array
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
@@ -22,7 +22,7 @@ class SeasonCollection
     ORDER BY name;
 SQL
         );
-        $stmt->bindParam(":id", $tvShowId);
+        $stmt->bindParam(":id", $Season);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Entity\Season");
     }
