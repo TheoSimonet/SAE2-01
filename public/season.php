@@ -17,7 +17,7 @@ $web->appendContent("<p class='encadretitle'><img src=poster.php?posterId={$tvsh
 
 foreach (SeasonCollection::findByTvshowId($tvshowId) as $season) {
     $titre = \Html\WebPage::escapeString($season->getName());
-    $web->appendContent("<div class='encadreSeason'><p class='titreseason'>$titre\n </p>");
-    $web->appendContent("<img class='posterSeason' src=poster.php?posterId={$season->getPosterId()}></div>");
+    $web->appendContent("<a href='episode.php?seasonId={$season->getId()}'> <div class='encadreSeason'><p class='titreseason'>$titre\n </p>");
+    $web->appendContent("<img class='posterSeason' src=poster.php?posterId={$season->getPosterId()}></div></a>");
 }
 echo $web->toHTML();
