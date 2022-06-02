@@ -19,10 +19,10 @@ $webPage->appendContent(
     HTML
 );
 
-foreach ($series as $index => $serie) {
+foreach ($series as $index => $tvshow) {
     $webPage->appendContent(
         <<<HTML
-    <p class="encadre"> <img class="poster" src=poster.php?posterId={$serie->getPosterId()}"> <a href="season.php?tvshowId={$serie->getId()}">{$webPage::escapeString($serie->getName())}.{$webPage::escapeString($serie->getOverview())}</a></p>
+    <p class="encadre"> <img class="poster" src=poster.php?posterId={$tvshow->getPosterId()}"> <a href="season.php?tvshowId={$tvshow->getId()}">{$webPage::escapeString($tvshow->getName())}.{$webPage::escapeString($tvshow->getOverview())}</a></p>
     HTML
     );
 }
