@@ -10,12 +10,14 @@ use Entity\Collection\SeasonCollection;
 $tvshowId = intval($_GET['tvshowId']);
 
 $web = new \Html\AppWebPage();
+$web->appendCssUrl("/css/style.css");
 $tvshow = Tvshow::findById($tvshowId);
 $web->setTitle("Séries TV : " . $tvshow->getName());
+$web->appendContent("<p class='encadretitle'><img src=poster.php?posterId={$tvshow->getPosterId()}>{$web::escapeString($tvshow->getName())}  <br> {$web::escapeString($tvshow->getOverview())}</p>");
 
 foreach (SeasonCollection::findByTvshowId($tvshowId) as $season) {
     $titre = \Html\WebPage::escapeString($season->getName());
-    $web->appendContent("<p>$titre</p>\n");
-    $web->appendContent("<img class='poster' src=poster.php?posterId={$season->getPosterId()}>");
+    $web->appendContent("<div class='encadreSeason'><p class='titreseason'>$titre\n </p>");
+    $web->appendContent("<img class='posterSeason' src=poster.php?posterId={$season->getPosterId()}></div>");
 }
 echo $web->toHTML();
