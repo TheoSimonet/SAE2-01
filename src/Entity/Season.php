@@ -9,7 +9,7 @@ use PDO;
 class Season
 {
     private int $id;
-    private int $tvShow;
+    private int $tvShowId;
     private string $name;
     private int $seasonNumber;
     private int $posterId;
@@ -25,9 +25,9 @@ class Season
     /**
      * @return int
      */
-    public function getTvShow(): int
+    public function getTvShowId(): int
     {
-        return $this->tvShow;
+        return $this->tvShowId;
     }
 
     /**
