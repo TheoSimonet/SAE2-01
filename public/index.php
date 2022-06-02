@@ -22,7 +22,7 @@ $webPage->appendContent(
 foreach ($series as $index => $serie) {
     $webPage->appendContent(
         <<<HTML
-    <p> <img class="poster" src=poster.php?posterId={$serie->getPosterId()}"> <a href="season.php?tvshowId={$serie->getId()}">{$webPage::escapeString($serie->getName())}.{$webPage::escapeString($serie->getOverview())}</a></p>
+    <p class="encadre"> <img class="poster" src=poster.php?posterId={$serie->getPosterId()}"> <a href="season.php?tvshowId={$serie->getId()}">{$webPage::escapeString($serie->getName())}.{$webPage::escapeString($serie->getOverview())}</a></p>
     HTML
     );
 }
