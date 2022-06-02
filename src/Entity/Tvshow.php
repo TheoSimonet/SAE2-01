@@ -92,7 +92,7 @@ class Tvshow
         if ($tvshow == true) {
             return $tvshow[0];
         } else {
-            throw EntityNotFoundException("Entité introuvable");
+            throw new EntityNotFoundException("Entité introuvable");
         }
     }
 

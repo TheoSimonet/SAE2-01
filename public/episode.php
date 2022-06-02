@@ -9,4 +9,4 @@ use Entity\Collection\EpisodeCollection;
 $seasonId = intval($_GET['seasonId']);
 
 $web = new AppWebPage();
-$seasonId = Season::
+$season = Season::findById($seasonId);
