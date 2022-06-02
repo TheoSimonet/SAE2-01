@@ -16,5 +16,6 @@ $web->setTitle("Séries TV : " . $tvshow->getName());
 foreach (SeasonCollection::findByTvshowId($tvshowId) as $season) {
     $titre = \Html\WebPage::escapeString($season->getName());
     $web->appendContent("<p>$titre</p>\n");
+    $web->appendContent("<img class='poster' src=poster.php?posterId={$season->getPosterId()}>");
 }
 echo $web->toHTML();
