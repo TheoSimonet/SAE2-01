@@ -23,7 +23,7 @@ $a = "<div class =button>
         </form>
       </div>";
 $web->setTitle("Séries TV : " . $tvshow->getName() . "$a");
-$web->appendContent("<p class='encadretitle'><img class='postersaisonepisode' src= '{$src}'>{$web::escapeString($tvshow->getName())}  <br> {$web::escapeString($tvshow->getOverview())}</p>");
+$web->appendContent("<p class='encadretitle'><img class='postersaisonepisode' src= '{$src}'>{$web::escapeString($tvshow->getName())} <br> {$web::escapeString($tvshow->getOverview())}</p>");
 
 foreach (SeasonCollection::findByTvshowId($tvshowId) as $season) {
     $titre = \Html\WebPage::escapeString($season->getName());

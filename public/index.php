@@ -18,7 +18,7 @@ if (isset($_GET["Filtre"]) && ctype_digit($_GET["Filtre"]) && $_GET["Filtre"] !=
 }
 
 $header = <<<HTML
-    <form action="index.php" method="get">
+    <form class='filtre' action="index.php" method="get">
         FILTRE :
         <select name="Filtre" size="1">
             <option value="0">Tous les genres</option>
@@ -55,7 +55,7 @@ foreach ($series as $index => $tvshow) {
 
     $webPage->appendContent(
         <<<HTML
-    <p class="encadre"> <img class="poster" src='{$src}'"> <a href="season.php?tvshowId={$tvshow->getId()}">{$webPage::escapeString($tvshow->getName())}.{$webPage::escapeString($tvshow->getOverview())}</a></p>
+    <p class="encadre"> <img class="poster" src='{$src}'"> <a href="season.php?tvshowId={$tvshow->getId()}">{$webPage::escapeString($tvshow->getName())} <br> {$webPage::escapeString($tvshow->getOverview())}</a></p>
     HTML
     );
 }
