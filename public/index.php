@@ -20,9 +20,15 @@ $webPage->appendContent(
 );
 
 foreach ($series as $index => $tvshow) {
+    if ($tvshow->getPosterId() == null) {
+        $src = "public/image/default.png";
+    } else {
+        $src = "poster.php?posterId={$tvshow->getPosterId()}";
+    }
+    
     $webPage->appendContent(
         <<<HTML
-    <p class="encadre"> <img class="poster" src=poster.php?posterId={$tvshow->getPosterId()}"> <a href="season.php?tvshowId={$tvshow->getId()}">{$webPage::escapeString($tvshow->getName())}.{$webPage::escapeString($tvshow->getOverview())}</a></p>
+    <p class="encadre"> <img class="poster" src='{$src}'"> <a href="season.php?tvshowId={$tvshow->getId()}">{$webPage::escapeString($tvshow->getName())}.{$webPage::escapeString($tvshow->getOverview())}</a></p>
     HTML
     );
 }
