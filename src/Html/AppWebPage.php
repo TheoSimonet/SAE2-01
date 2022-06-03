@@ -24,7 +24,7 @@ class AppWebPage extends WebPage
         $html .= $this->getHead() . "</head> \n"."<body> \n";
         $html .= "<header class='header'> <h1>".$this->getTitle()."</h1></header> \n";
         $html .= "<div class='content'> <main class='list'>" .$this->getBody()."\n </main></div>";
-        $html .= "<footer class='footer'>". self::getLastModification() . "</footer>\n";
+        $html .= "<footer class='footer'><h1>". self::getLastModification() . "</h1></footer>\n";
         $html .= "</body>\n"."</html>\n";
         return $html;
     }
