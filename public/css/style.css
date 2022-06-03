@@ -68,5 +68,8 @@ footer{
     background-color: lightgray;
     margin: 10px;
 }
-
+.button{
+    display: flex;
+    justify-content: flex-start;
+}
 

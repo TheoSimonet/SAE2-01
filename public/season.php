@@ -12,7 +12,12 @@ $tvshowId = intval($_GET['tvshowId']);
 $web = new \Html\AppWebPage();
 $web->appendCssUrl("/css/style.css");
 $tvshow = Tvshow::findById($tvshowId);
-$web->setTitle("Séries TV : " . $tvshow->getName());
+$a = "<div class =button> 
+        <form action = 'http:localhost:8000'>
+            <button type='submit'>retour</button>
+        </form>
+      </div>";
+$web->setTitle("Séries TV : " . $tvshow->getName(). "$a");
 $web->appendContent("<p class='encadretitle'><img src=poster.php?posterId={$tvshow->getPosterId()}>{$web::escapeString($tvshow->getName())}  <br> {$web::escapeString($tvshow->getOverview())}</p>");
 
 foreach (SeasonCollection::findByTvshowId($tvshowId) as $season) {
